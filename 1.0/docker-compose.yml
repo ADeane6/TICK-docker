@@ -62,3 +62,6 @@ services:
       KAPACITOR_URL: http://kapacitor:9092
     links:
       - kapacitor
+
+volumes:
+  grafana_data: {}
