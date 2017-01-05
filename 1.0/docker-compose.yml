@@ -20,15 +20,17 @@ services:
     ports:
       - "8086:8086"
       - "8083:8083"
-  # Define a Chronograf service
-#  chronograf:
-#    image: chronograf:1.0.0-rc1
-#    volumes:
-#      - ./data/chronograf:/var/lib/chronograf
-#    ports:
-#      - "10000:10000"
-#    links:
-#      - influxdb
+  # Define a Grafana service
+  grafana:
+    image: grafana/grafana:3.0.1
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=pass
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    links:
+      - influxdb
   # Define a Kapacitor service
   kapacitor:
     image: kapacitor:1.0.0-rc1
