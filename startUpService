@@ -1,0 +1,13 @@
+[Unit]
+Description=Tick Stack
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+WorkingDirectory=/home/centos/TICK-docker/1.0
+ExecStart=/usr/local/bin/docker-compose up -d
+ExecStop=/usr/local/bin/docker-compose down
+
+[Install]
+WantedBy=default.target
