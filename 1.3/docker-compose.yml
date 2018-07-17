@@ -4,6 +4,7 @@ services:
   # Define a Telegraf service
   telegraf:
     image: telegraf:1.7.1
+    container_name: telegraf
     volumes:
       - ./etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     links:
@@ -16,6 +17,7 @@ services:
   # Define an InfluxDB service
   influxdb:
     image: influxdb:1.3.5
+    container_name: influxdb
     volumes:
       - ./data/influxdb:/var/lib/influxdb
       - ./etc/influxdb.conf:/etc/influxdb/influxdb.conf:ro
@@ -35,6 +37,7 @@ services:
   #     - kapacitor
   grafana:
     image: grafana/grafana
+    container_name: grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=pass
     volumes:
